@@ -14,4 +14,5 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo $GITHUB_REF
+        run: |
+          echo "Test: ${GITHUB_HEAD_REF}"
