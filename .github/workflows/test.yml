@@ -6,7 +6,7 @@ on:
     tags: 
       - 'release-*'
     branches:
-      - master
+      - main
 env:
   GITHUB_REF: ${{ github.ref }}
 
@@ -19,7 +19,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "This should only run when we are pushing commit to master"
           
