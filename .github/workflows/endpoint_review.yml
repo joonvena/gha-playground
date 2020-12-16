@@ -15,9 +15,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          echo "Hello from $TEST"
+          echo "Hello"
+          echo "Hello from ${TEST2,,}"
         env:
-          TEST: ${{ github.sha:0:3}}
+          TEST2: ASDASDASDSDAS
+          TEST: ${{ github.sha }}
         
   build:
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags')
