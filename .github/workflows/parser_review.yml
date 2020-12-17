@@ -1,0 +1,31 @@
+name: Test
+
+# Controls when the action will run. 
+on:
+  pull_request:
+    paths: parser/**/*
+    
+env:
+  GITHUB_REF: ${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Build
+        run: |
+          echo "This should only run when we are pushing commit to master"
+          
+  production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Production
+        if: github.ref == 'refs/tags/release-*'
+        run: |
+          echo "This should only trigger when we are tagging and creating release"
+          
