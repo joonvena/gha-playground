@@ -2,8 +2,9 @@ name: Test
 
 # Controls when the action will run. 
 on:
-  pull_request:
-    paths: endpoint/**/*
+  push:
+    tags:
+      - 'release-*'
     
 env:
   GITHUB_REF: ${{ github.ref }}
