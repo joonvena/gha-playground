@@ -6,13 +6,16 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - uses: actions/checkout@v2
-      - uses: andersinno/kolga-setup-action@v3
         
       - name: "Testing out"
         run: |
-          echo "Hello from $K8S_ADDITIONAL_HOSTNAMES"
+          echo "Hello from $CONTEXT"
+        env:
+          CONTEXT: ${{ toJSON(github) }} 
         
       
           
