@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          apt-get update
+          apt-get update -y
